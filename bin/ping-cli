@@ -1,0 +1,20 @@
+#!/usr/bin/env php
+<?php declare(strict_types = 1);
+
+if (php_sapi_name() !== 'cli') {
+    exit;
+}
+
+$root = dirname(__DIR__);
+
+if (! is_file($root . '/vendor/autoload.php')) {
+    $root = dirname(__DIR__, 4);
+}
+
+require $root . '/vendor/autoload.php';
+
+use Minicli\App;
+
+$app = new App();
+
+$app->runCommand($argv);
