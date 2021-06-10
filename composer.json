@@ -1,7 +1,7 @@
 {
     "name": "thinkverse/ping-cli",
     "description": "A simple CLI tool for pinging websites",
-    "type": "project",
+    "type": "library",
     "license": "MIT",
     "authors": [{
         "name": "Kim <thinkverse> Hallberg",
