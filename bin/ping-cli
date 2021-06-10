@@ -13,6 +13,7 @@ if (! is_file($root . '/vendor/autoload.php')) {
 
 require $root . '/vendor/autoload.php';
 
+use Minicli\Command\CommandCall;
 use Minicli\App;
 
 $app = new App();
@@ -26,5 +27,9 @@ $app->setSignature(<<<EOD
 /_/            /____/ \e[0;32m Ver. 0.0.1
 
 EOD);
+
+$app->registerCommand('ping', function (CommandCall $input) use ($app) {
+    $app->getPrinter()->success('We have lift-off! 🚀');
+});
 
 $app->runCommand($argv);
