@@ -46,13 +46,18 @@ $app->registerCommand('ping', function (CommandCall $input) use ($app) {
         return 1;
     }
 
+    $start_time = microtime(as_float: true);
+
     /* Suspend warnings displayed if URL provided is not reachable. */
     if (! @file_get_contents($url, context: getStreamContext())) {
         $app->getPrinter()->error('Parameter <url> could not be reached.');
         return 1;
     }
 
+    $end_time = microtime(as_float: true);
+
     $app->getPrinter()->success(sprintf('URL <%s> is up.', $url));
+    $app->getPrinter()->display(sprintf('Est. ping time: %.02f sec', ($end_time - $start_time)));
 });
 
 function getStreamContext() {
